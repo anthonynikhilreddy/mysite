@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-9h+zvh_)21p5s!q89)k@8k5b@$vrj3_54#u-qr3&9)j*h6#%pu
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "http://mysite-dev2.us-east-2.elasticbeanstalk.com/"
+    "mysite-dev2.us-east-2.elasticbeanstalk.com"
 ]
 
 
