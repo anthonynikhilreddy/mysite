@@ -1,4 +1,26 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
+dist: jammy
+language: python
+matrix:
+  include:
+  - python: 3.11
+install:
+- pip install -r requirements.txt
+script:
+- black --check .
+- flake8 .
+- coverage run manage.py
+after_success:
+- coveralls
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  access_key_id: $aws_access_key
+  secret_access_key: $aws_secret_access_key
+  bucket_name: $aws_bucket_name
+  app: mysite
+  env: mysite-dev2
+  on:
+    repo: anthonynikhilreddy/swe1-app
+    branch: main
+  skip_cleanup: 'true'
